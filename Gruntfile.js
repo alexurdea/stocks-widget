@@ -25,6 +25,22 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    coffee: {
+      options: {
+        sourceMap: true,
+        sourceRoot: ''
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test/spec',
+          src: '{,*/}*.coffee',
+          dest: '.tmp/spec',
+          ext: '.js'
+        }]
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
@@ -33,6 +49,10 @@ module.exports = function (grunt) {
         options: {
           livereload: true
         }
+      },
+      coffeeTest: {
+        files: ['test/spec/{,*/}*.coffee'],
+        tasks: ['coffee:test', 'copy:coffeeSpecSource']
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
