@@ -403,4 +403,31 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('testem', 'run specs', function(){
+    var path = require('path');
+    var fork = require('child_process').fork;
+    var testemRunnerPath = require('./test/testem-utils').testemRunnerPath;
+    var child, done, args;
+
+    try {
+      grunt.task.run('coffee:test');
+
+      done = this.async();
+      args = ['-f', path.resolve(process.cwd() + '/config/spec.json')];
+      if (this.options().growl) {
+        args.push('-g');
+      }
+      child = fork(testemRunnerPath(false), args);
+      child.on('exit', function exitCb(code){
+        if (code !== 0){
+          grunt.warn('Spec execution failed with exit code ' + code);
+        }
+        done();
+      });
+    } catch (e) {
+      grunt.fatal(e);
+      throw(e);
+    }
+  });
 };
