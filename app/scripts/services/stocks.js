@@ -3,7 +3,6 @@
 angular.module('testApp')
 
 .constant('STOCKS_QYL_URL_LOOKUP_URL', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22<SYMBOL>%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=')
-.constant('STOCKS_YQL_URL_QUOTE_URL', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%3D%22<SYMBOL>%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=')
 
 .factory('stocks', ['$http', 'STOCKS_QYL_URL_LOOKUP_URL', '$q',
   function($http, STOCKS_QYL_URL_LOOKUP_URL, $q){
