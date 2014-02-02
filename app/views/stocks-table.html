@@ -13,7 +13,7 @@
       <td><img ng-src="{{icon}}" alt="add stock to portfolio" class="action" ng-click="action({stock: stock})"></td>
       <td>{{ stock.symbol }}</td>
       <td>{{ stock.price }}</td>
-      <td>{{ stock.activity }}</td>
+      <td ng-class="{ up: stock.change==='up', down: stock.change==='down'}">{{ stock.activity }}</td>
     </tr>
   </tbody>
 

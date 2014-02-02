@@ -34,10 +34,19 @@ angular.module('testApp')
    * @param {Object} obj
    */
   stocks.dataObjToQuote = function dataObjToQuote(obj){
+    var change = null, act = parseInt(obj.PercentChange);
+
+    if (act > 0){
+      change = 'up';
+    } else if (act < 0){
+      change = 'down';
+    }
+
     return {
       symbol: obj.symbol,
-      price: obj.Ask,
-      activity: obj.PercentChange
+      price: obj.Ask || '--',
+      activity: obj.PercentChange,
+      change: change
     };
   };
 

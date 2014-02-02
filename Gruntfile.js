@@ -314,6 +314,12 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }]
       },
+      coffeeSpecSource: {
+        expand: true,
+        cwd: 'test/spec/',
+        dest: '.tmp/spec/',
+        src: '{,*/}*.coffee'
+      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',

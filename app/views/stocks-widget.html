@@ -1,24 +1,25 @@
 <div class="actions">
-  <button class="search" ng-click="changeMode('search')">Search</button>
-  <button class="portolio" ng-click="changeMode('portfolio')">Portfolio</button>
+  <a class="search" ng-class="{selected: mode==='search'}" ng-click="changeMode('search')">Search</a>
+  <a class="portolio" ng-class="{selected: mode==='portfolio'}" ng-click="changeMode('portfolio')">Portfolio</a>
+</div>
 
 <!-- search section -->
-  <div class="search-view" ng-show="mode==='search'">
+<div class="search-view" ng-show="mode==='search'">
 
-    <input type="text" ng-model="searchItem" placeholder="Enter stock symbol">
-    <button ng-click="searchSymbol(searchItem)">Search</button>
+  <input type="text" ng-model="searchItem" placeholder="Enter stock symbol">
+  <button ng-click="searchSymbol(searchItem)">Search</button>
 
-    <div class="search-results" ng-show="result" stocks-table stocks="[result]" action="addStock(stock)" icon="images/plus-32.png"></div>
-      
-  </div>
+  <div class="search-results" ng-show="result" stocks-table stocks="[result]" action="addStock(stock)" icon="images/plus-32.png"></div>
+    
+</div>
 <!--/search section -->
 
 <!-- portfolio section -->
-  <div class="search-view" ng-hide="mode==='search'">Your portfolio
-    <div class="portfolio-stocks" ng-show="stocks.length" stocks-table stocks="stocks" action="removeStock(stock)" icon="images/minus-32.png"></div>
-  </div>
+<div class="portfolio-view" ng-hide="mode==='search'">
+  <div class="portfolio-stocks" ng-show="stocks.length" stocks-table stocks="stocks" action="removeStock(stock)" icon="images/minus-32.png"></div>
+
+  <p ng-show="!stocks.length" class="no-stocks">There are no stocks in your portfolio</p>
+</div>
 <!--/portfolio section -->
 
-  <div class="message" ng-show="message">{{ message }}</div>
-
-</div>
+<p class="message" ng-show="message">{{ message }}</p>
