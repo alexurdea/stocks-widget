@@ -6,10 +6,7 @@ angular.module('testApp')
 
   dirOpts = {
     restrict: 'E',
-    templateUrl: 'views/stocks-widget.html',
-    link: function(){
-      console.log('linked stocks-widget!');
-    }
+    templateUrl: 'views/stocks-widget.html'
   };
 
   return dirOpts;
