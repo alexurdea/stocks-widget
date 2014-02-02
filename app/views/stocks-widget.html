@@ -1,0 +1,24 @@
+<div class="actions">
+  <button class="search" ng-click="changeMode('search')">Search</button>
+  <button class="portolio" ng-click="changeMode('portfolio')">Portfolio</button>
+
+<!-- search section -->
+  <div class="search-view" ng-show="mode==='search'">
+
+    <input type="text" ng-model="searchItem" placeholder="Enter stock symbol">
+    <button ng-click="searchSymbol(searchItem)">Search</button>
+
+    <div class="search-results" ng-show="result" stocks-table stocks="[result]" action="addStock(stock)" icon="images/plus-32.png"></div>
+      
+  </div>
+<!--/search section -->
+
+<!-- portfolio section -->
+  <div class="search-view" ng-hide="mode==='search'">Your portfolio
+    <div class="portfolio-stocks" ng-show="stocks.length" stocks-table stocks="stocks" action="removeStock(stock)" icon="images/minus-32.png"></div>
+  </div>
+<!--/portfolio section -->
+
+  <div class="message" ng-show="message">{{ message }}</div>
+
+</div>

@@ -1,0 +1,20 @@
+<table class="stocks-table">
+  <thead>
+    <tr>
+      <td></td>
+      <td>Symbol</td>
+      <td>Price</td>
+      <td>Activity</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="stock in stocks">
+      <td><img ng-src="{{icon}}" alt="add stock to portfolio" class="action" ng-click="action({stock: stock})"></td>
+      <td>{{ stock.symbol }}</td>
+      <td>{{ stock.price }}</td>
+      <td>{{ stock.activity }}</td>
+    </tr>
+  </tbody>
+
+</table>
