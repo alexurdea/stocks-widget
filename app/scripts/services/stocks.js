@@ -43,7 +43,7 @@ angular.module('testApp')
 
     return {
       symbol: obj.symbol,
-      price: obj.Ask || '--',
+      price: obj.AskRealtime || '--',
       activity: obj.PercentChange,
       change: change
     };

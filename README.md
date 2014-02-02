@@ -27,6 +27,7 @@ The stock quotes service from Yahoo seemed the best choice for a quick start. Ho
 
 The aim was to decouple the parts of the system, "the Angular way". Two directives were created: `stocksWidget` and `stocksTable` (because it's layout that repeats in both panels - search and portfolio. The `stocksTable` has an isolated scope, and gets the aspect and behavior of the action icon as parameters.
 
-The `portfolio` service is responsible for data persistence, and the `stocks` service will query the Yahoo service (forming a YQL query URL). The format for the query URL is separated into an angular constant.
+The `portfolio` service is responsible for data persistence, and the `stocks` service will query the Yahoo service (forming a YQL query URL). The format for the query URL is separated into an angular constant `STOCKS_QYL_URL_LOOKUP_URL`, and so is the
+interval to poll the service `STOCK_POLL_INTERVAL`.
 
 Please see `/test/spec/` for the unit tests.

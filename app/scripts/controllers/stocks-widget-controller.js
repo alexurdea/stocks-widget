@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('testApp')
-.controller('StocksWidgetCtrl', ['$scope', 'portfolio', 'stocks', function($scope, portfolio, stocks){
+.constant('STOCK_POLL_INTERVAL', 15000)
+.controller('StocksWidgetCtrl', ['$scope', '$interval', 'portfolio', 'stocks', 'STOCK_POLL_INTERVAL',
+  function($scope, $interval, portfolio, stocks, STOCK_POLL_INTERVAL){
   $scope.stocks = portfolio.getStocks();
   $scope.mode = $scope.stocks.length > 0 ? 'portfolio' : 'search';
 
@@ -29,6 +31,18 @@ angular.module('testApp')
       $scope.result = null;
     });
   };
+
+
+  function updatePortfolio(){
+    $scope.stocks.forEach(function(stock){
+      stocks.search(stock.symbol)
+      .then(function(result){
+        $scope.stocks = portfolio.saveStock(result);
+      });
+    });
+  }
+  
+  $interval(updatePortfolio, STOCK_POLL_INTERVAL);
 
 
   /**
