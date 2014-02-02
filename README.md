@@ -11,10 +11,11 @@ You need to run this on a machine that has Node installed. I've used v0.10.24 wh
 ```javascript
 npm install
 bower install
+```
 
 To run the unit tests: `grunt testem`. It sometimes has glitches - if 0 tests are loaded press return and you should see 12 tests loaded.
 
-To run the server and see the widget: `grunt serve &`
+To run the server and see the widget: `grunt serve &` and point your browser to http://localhost:9000.
 
 
 Design choices
@@ -30,4 +31,8 @@ The aim was to decouple the parts of the system, "the Angular way". Two directiv
 The `portfolio` service is responsible for data persistence, and the `stocks` service will query the Yahoo service (forming a YQL query URL). The format for the query URL is separated into an angular constant `STOCKS_QYL_URL_LOOKUP_URL`, and so is the
 interval to poll the service `STOCK_POLL_INTERVAL`.
 
-Please see `/test/spec/` for the unit tests.
+These services are mocked in tests when they are not the SUT.
+
+Quick reference: please see `/test/spec/` for the unit tests. JS code is in /app/scripts.
+
+![image](preview.jpg)
